@@ -14,15 +14,13 @@ export class HeroesComponent implements OnInit {
 
   constructor(private heroService: HeroService) { }
 
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+  }
 
   ngOnInit() {
-    this.heroes = this.heroService.getHeroes();
-    /*
-      This will not work in a real app. You're getting
-      away with it now because the service currently returns 
-      mock heroes. But soon the app will fetch heroes from a
-      remote server, which is an inherently asynchronous operation.
-    */
+   this.getHeroes();
   }
 
   onSelect(hero: Hero): void {
