@@ -1,6 +1,24 @@
-<ul class='heroes'>
-    <li *ngFor='let hero of heroes'>
-        <span class='badge'>{{hero.id}}</span>
-        {{hero.name}}
-    </li>
-</ul>
+<div>
+    <div>
+        <span>
+            Selected Hero: 
+            <span class='selectedHero'>
+                {{selectedHero.name | uppercase}}
+            </span>
+        </span>
+    </div>
+    <ul class='heroes'>
+        <li *ngFor='let hero of heroes' 
+        [class.selected]="hero === selectedHero"
+        (click)='onSelect(hero)'>
+            <span class='hero'>
+                <span class='hero_id'>
+                    {{hero.id}} 
+                </span>
+                <span class='hero_name'>
+                    {{hero.name}}
+                </span>
+            </span>
+        </li>
+    </ul>
+</div>
